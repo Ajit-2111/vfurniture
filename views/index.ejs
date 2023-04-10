@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VFurnikart</title>
+    <script src="https://use.fontawesome.com/140718bec8.js"></script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%-include('header.ejs')%>
+
+    <section id="hero">
+      <h4>Trade-in-Offer</h4>
+      <h2>Super Value Deals</h2>
+      <h1>On All Products</h1>
+      <p>Save more with coupons & upto 70% off!</p>
+      <button>Shop Now</button>
+    </section>
+
+    <section id="feature" class="section-p1">
+      <div class="fe-box">
+        <img src="/images/features/f1.png" alt="Features" />
+        <h6>Free Shipping</h6>
+      </div>
+      <div class="fe-box">
+        <img src="/images/features/f2.png" alt="Online Order" />
+        <h6>Online Order</h6>
+      </div>
+      <div class="fe-box">
+        <img src="/images/features/f3.png" alt="Save Money" />
+        <h6>Save Money</h6>
+      </div>
+      <div class="fe-box">
+        <img src="/images/features/f4.png" alt="Promotions" />
+        <h6>Promotions</h6>
+      </div>
+      <div class="fe-box">
+        <img src="/images/features/f5.png" alt="Happy Sell" />
+        <h6>Happy Sell</h6>
+      </div>
+      <div class="fe-box">
+        <img src="/images/features/f6.png" alt="24/7 Support" />
+        <h6>24/7 Support</h6>
+      </div>
+    </section>
+
+    <!-- <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="dragable-bg">
+        </div>
+        <input type="file" name="modalbgimg" id="modalbgimg" />
+      </div>
+    </div> -->
+
+    <!-- ---------------------------------------------- -->
+
+    <section id="product1" class="section-p1">
+      <h2>Featured Products</h2>
+      <p>New Modern Design Collection For Bedroom</p>
+      <div class="pro-container">
+
+
+        <% featured.forEach((feature) => { %>
+         <div class="pro" onclick="document.location.href='/products/<%= feature.id %>'" >
+          <img src="<%= feature.imgpath %>" alt="sofa1" />
+          <div class="des">
+            <span>Arne Jacobsen</span>
+            <h5><%= feature.name %></h5>
+            <div class="star">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <h4>Rs.<%= feature.price %></h4>
+          </div>
+          <a href="#"> <i class="fa fa-shopping-cart cart"></i></a>
+        </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section id="banner" class="section-m1">
+      <h4>Repair Services</h4>
+      <h2>Up to <span>70% Off</span> - All Furnitures</h2>
+      <button class="normal">Explore more</button>
+    </section>
+
+    <section id="product1" class="section-p1">
+      <h2>New Arrivals</h2>
+      <p>Latest Designer Collection of Furnitures</p>
+      <div class="pro-container">
+         <% newarrival.forEach((newprod) => { %>
+            <div class="pro" onclick="document.location.href='/products/<%= newprod.id %>'" >
+             <img src="<%= newprod.imgpath %>" alt="sofa1" />
+             <div class="des">
+               <span>Arne Jacobsen</span>
+               <h5><%= newprod.name %></h5>
+               <div class="star">
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+               </div>
+               <h4>Rs.<%= newprod.price %></h4>
+             </div>
+             <a href="#"> <i class="fa fa-shopping-cart cart"></i></a>
+           </div>
+           <% }) %>
+      </div>
+    </section>
+
+    <section id="sm-banner" class="section-p1">
+      <div class="banner-box">
+        <h4>Crazy Deals</h4>
+        <h2>70% Off on All</h2>
+        <span>The best Classic Furniture Design</span>
+        <button class="white">Learn More</button>
+      </div>
+      <div class="banner-box banner-box2">
+        <h4>Crazy Deals</h4>
+        <h2>70% Off on All</h2>
+        <span>The best Classic Furniture Design</span>
+        <button class="white">Learn More</button>
+      </div>
+    </section>
+
+    <section id="banner3">
+      <div class="banner-box">
+        <h2>UPCOMING SALES</h2>
+        <h3>Minimum 50% OFF</h3>
+      </div>
+      <div class="banner-box banner-box2">
+        <h2>SEASONAL SALES</h2>
+        <h3>Heavy Discounts</h3>
+      </div>
+      <div class="banner-box banner-box3">
+        <h2>WINTER SPECIAL</h2>
+        <h3>Make Your Winter Special</h3>
+      </div>
+    </section>
+    <!-- needed change -->
+    <br />
+    <section id="newsletter" class="section-p1">
+      <div class="newstext">
+        <h4>Sign Up For Newsletters</h4>
+        <p>
+          Get E-mail updates about our latest shop and
+          <span>special offers.</span>
+        </p>
+      </div>
+      <div class="form">
+        <input type="text" placeholder="Your email address" />
+        <button class="normal">Sign Up</button>
+      </div>
+    </section>
+    <!-- needed change -->
+    <br />
+    <br />
+
+    <footer class="section-p1">
+      <div class="col">
+        <img class="logo" src="/images/logo.png" alt="logo" />
+        <h4>Contact</h4>
+        <p>
+          <strong> Address :</strong> A32 Nachane Road,Salvi Stop, Ratnagiri
+        </p>
+        <p><strong> Phone :</strong> +91 8237138622 / +91 8806506675</p>
+        <p><strong> Hours :</strong> 09:00 - 18:00, Monday - Friday</p>
+        <div class="follow">
+          <h4>Follow Us</h4>
+          <div class="icon">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-envelope-o"></i>
+            <i class="fa fa-youtube-play"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+      </div>
+
+      <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google Play</p>
+        <div class="row">
+          <img src="/images/payment/app.jpg" alt="App Store" />
+          <img src="/images/payment/play.jpg" alt="google Store" />
+        </div>
+        <p>Secured Payment Gateways</p>
+        <img src="/images/payment/pay.png" alt="payment" />
+      </div>
+
+      <div class="copyright">
+        <p>@ 2022, RMCET - Major Project by(19,51,52)</p>
+      </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>

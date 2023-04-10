@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+         <script src="https://use.fontawesome.com/140718bec8.js"></script>
+         <link rel="stylesheet" type="text/css" href="/css/style.css" />
+         <link rel="stylesheet"  type="text/css" href="/css/eShop.css" />
+<style>
+  .modal-content {
+    position: relative;
+  }
+</style>
+  </head>
+  
+  <body>
+    <%-include('your-path')%>
+
+    <!-- ---------------------------------------------- -->
+
+    <section id="prodetails" class="section-p11">
+      <div class="single-pro-image">
+        <img src="<%= '/'+ product.imgpath %>" width="100%" id="MainImg" alt="" />
+        <div class="small-img-group">
+          <div class="small-img-col">
+            <img src="<%= '/'+ product.imgpath %>"
+            width="100%" class="small-img" alt="" />
+          </div>
+          <div class="small-img-col">
+            <img src="/images/moto_product/<%= product.imgno %>/<%= product.imgno %>a.jpeg"
+            width="100%" class="small-img" alt="" />
+          </div>
+          <div class="small-img-col">
+            <img
+              src="/images/moto_product/<%= product.imgno %>/<%= product.imgno %>b.jpeg"
+              width="100%"
+              class="small-img"
+              alt=""
+            />
+          </div>
+          <div class="small-img-col">
+            <img
+              src="/images/moto_product/<%= product.imgno %>/<%= product.imgno %>c.jpeg"
+              width="100%"
+              class="small-img"
+              alt=""
+            />
+          </div>
+          <div class="small-img-col">
+            <img
+              src="/images/moto_product/<%= product.imgno %>/<%= product.imgno %>d.jpeg"
+              width="100%"
+              class="small-img"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div class="single-pro-modal">
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="dragable-bg"></div>
+            <input type="file" name="modalbgimg" id="modalbgimg" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="single-pro-details">
+      <h6>Lorem, ipsum dolor..</h6>
+      <h3><%= product.name %></h3>
+      <h2>Rs.<%= product.price %></h2>
+      <input type="number" value="1" />
+      <button class="normal">Add to Cart</button>
+      <h4>Product Details</h4>
+      <span><%= product.desc %>.</span>
+    </div>
+
+    <br />
+    <section id="newsletter" class="section-p1">
+      <div class="newstext">
+        <h4>Sign Up For Newsletters</h4>
+        <p>
+          Get E-mail updates about our latest shop and
+          <span>special offers.</span>
+        </p>
+      </div>
+      <div class="form">
+        <input type="text" placeholder="Your email address" />
+        <button class="normal">Sign Up</button>
+      </div>
+    </section>
+    <!-- needed change -->
+    <br />
+    <br />
+
+    <footer class="section-p1">
+      <div class="col">
+        <img class="logo" src="/images/logo.png" alt="logo" />
+        <h4>Contact</h4>
+        <p>
+          <strong> Address :</strong> A32 Nachane Road,Salvi Stop, Ratnagiri
+        </p>
+        <p><strong> Phone :</strong> +91 8237138622 / +91 8806506675</p>
+        <p><strong> Hours :</strong> 09:00 - 18:00, Monday - Friday</p>
+        <div class="follow">
+          <h4>Follow Us</h4>
+          <div class="icon">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-envelope-o"></i>
+            <i class="fa fa-youtube-play"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+      </div>
+
+      <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google Play</p>
+        <div class="row">
+          <img src="/images/payment/app.jpg" alt="App Store" />
+          <img src="/images/payment/play.jpg" alt="google Store" />
+        </div>
+        <p>Secured Payment Gateways</p>
+        <img src="/images/payment/pay.png" alt="payment" />
+      </div>
+
+      <div class="copyright">
+        <p>@ 2022, RMCET - Major Project by(19,51,52)</p>
+      </div>
+    </footer>
+    <script>
+      var MainImg = document.getElementById("MainImg");
+      var smallimg = document.getElementsByClassName("small-img");
+
+      smallimg[0].onclick = function () {
+        MainImg.src = smallimg[0].src;
+      };
+      smallimg[1].onclick = function () {
+        MainImg.src = smallimg[1].src;
+      };
+      smallimg[2].onclick = function () {
+        MainImg.src = smallimg[2].src;
+      };
+      smallimg[3].onclick = function () {
+        MainImg.src = smallimg[3].src;
+      };
+    </script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

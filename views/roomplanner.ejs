@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room-Planner</title>
+    <link rel="stylesheet" href="/css/style1.css">
+    <link rel="stylesheet" href="/css/acoount.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://use.fontawesome.com/140718bec8.js"></script>
+</head>
+<style>
+  
+.modal {
+  display: block; /* Hidden by default */
+  padding-top: 60px;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  padding-bottom: 200px;
+  border: 1px solid #888;
+  width: 100%;
+  height: 691px;
+  text-align: center;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#dragable-bg {
+  /* position: relative; */
+  background-image: url("./images/demo/trial2.jpg");
+  /*   height: 100%; */
+  width: 1200px;
+  height: 647px;;
+  background-size: cover;
+  border: 1px solid black;
+  margin: auto;
+}
+
+#dragable {
+  width: 160px;
+  height: 160px;
+  /* border: 1px solid #ccc; */
+  line-height: 100px;
+  text-align: center;
+  font-size: 20px;
+  resize: both;
+  /* overflow: hidden; */
+}
+
+.resizable img {
+    width: 50%;
+    height: 50%;
+}
+</style>
+<body>
+    <!-- navbar -->
+    <%-include('header.ejs')%>
+
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="dragable-bg">
+        </div>
+        <input type="file" name="modalbgimg" id="modalbgimg" />
+      </div>
+    </div>
+
+
+    <section id="product1" class="section-p1">
+
+      
+        <div class="pro-container">
+         <% products.forEach((product) => { %>
+            <div class="pro">
+             <img src="<%= product.imgpath %>" alt="sofa1" />
+             <div class="des">
+               <span>Arne Jacobsen</span>
+               <h5><%= product.name %></h5>
+               <div class="star">
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+               </div>
+               <h4>Rs.<%= product.price %></h4>
+             </div>
+             <a href="#"> <i class="fa fa-shopping-cart cart"></i></a>
+           </div>
+           <% }) %>
+          <!-- <div class="pro">
+            <a href="#"> <i class="fa-sharp fa-solid fa-plus"></i></a>
+          </div> -->
+        </div>
+      </section>
+
+
+    
+
+ 
+    <!-- footer -->
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo1" id="logo1" src="images/logo.png" alt="logo">
+            <h4>Contact</h4>
+            <p> <strong> Address :</strong> A32 Nachane Road,Salvi Stop, Ratnagiri</p>
+            <p> <strong> Phone :</strong> +91 8237138622 / +91 8806506675</p>
+            <p> <strong> Hours :</strong> 09:00 - 18:00, Monday - Friday</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-instagram"></i>
+                    <i class="fa fa-envelope-o"></i>
+                    <i class="fa fa-youtube-play"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install"> 
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="/images/payment/app.jpg" alt="App Store">
+                <img src="/images/payment/play.jpg" alt="google Store">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="/images/payment/pay.png" alt="payment">
+        </div>
+
+        <div class="copyright">
+            <p>@ 2022, RMCET - Major Project by(19,51,52)</p>
+        </div>
+
+    </footer>
+
+    <script>
+      const bar = document.getElementById("bar");
+const close = document.getElementById("close");
+const nav = document.getElementById("navbar");
+let modalbgimg = "";
+let imagesArray = [];
+let inputbgimg = document.querySelector("#modalbgimg");
+
+inputbgimg.addEventListener("change", () => {
+  const file = inputbgimg.files;
+  imagesArray.push(file[0]);
+  displayImages();
+});
+function displayImages() {
+  imagesArray.forEach((image, index) => {
+    modalbgimg = URL.createObjectURL(image);
+    console.log(URL.createObjectURL(image));
+    document.querySelector(
+      "#dragable-bg"
+    ).style.backgroundImage = `url('${modalbgimg}')`;
+  });
+}
+
+bar.addEventListener("click", () => {
+  nav.classList.add("active");
+});
+
+close.addEventListener("click", () => {
+  nav.classList.remove("active");
+});
+
+// ------------------------------
+var elements = document.getElementsByClassName("pro"); //change furniture to pro
+var modal = document.getElementById("myModal");
+for (var i = 0; i < elements.length; i++) {
+  elements[i].addEventListener(
+    "click",
+    () => (modal.style.display = "block"),
+    false
+  );
+}
+
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function () {
+  modal.style.display = "none";
+};
+// window.onclick = function (event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// };
+
+var Draggable = function (id) {
+  var el = document.getElementById(id),
+    isDragReady = false,
+    dragoffset = {
+      x: 0,
+      y: 0,
+    };
+  this.init = function () {
+    //only for this demo
+    this.initPosition();
+    this.events();
+  };
+  //only for this demo
+  this.initPosition = function () {
+    el.style.position = "absolute";
+    el.style.top = "0";
+    el.style.left = "0";
+  };
+  //events for the element
+  this.events = function () {
+    var self = this;
+    _on(el, "mousedown", function (e) {
+      isDragReady = true;
+      //corssbrowser mouse pointer values
+      e.pageX =
+        e.pageX ||
+        e.clientX +
+          (document.documentElement.scrollLeft
+            ? document.documentElement.scrollLeft
+            : document.getElementById("dragable-bg").scrollLeft);
+      e.pageY =
+        e.pageY ||
+        e.clientY +
+          (document.documentElement.scrollTop
+            ? document.documentElement.scrollTop
+            : document.getElementById("dragable-bg").scrollTop);
+      dragoffset.x = e.pageX - el.offsetLeft;
+      dragoffset.y = e.pageY - el.offsetTop;
+    });
+    _on(document, "mouseup", function () {
+      isDragReady = false;
+    });
+    _on(document, "mousemove", function (e) {
+      if (isDragReady) {
+        e.pageX =
+          e.pageX ||
+          e.clientX +
+            (document.documentElement.scrollLeft
+              ? document.documentElement.scrollLeft
+              : document.getElementById("dragable-bg").scrollLeft);
+        e.pageY =
+          e.pageY ||
+          e.clientY +
+            (document.documentElement.scrollTop
+              ? document.documentElement.scrollTop
+              : document.getElementById("dragable-bg").scrollTop);
+        // left/right constraint
+        if (e.pageX - dragoffset.x < 0) {
+          offsetX = 0;
+        } else if (
+          e.pageX - dragoffset.x + 102 >
+          document.getElementById("dragable-bg").clientWidth
+        ) {
+          offsetX = document.getElementById("dragable-bg").clientWidth - 102;
+        } else {
+          offsetX = e.pageX - dragoffset.x;
+        }
+
+        // top/bottom constraint
+        if (e.pageY - dragoffset.y < 0) {
+          offsetY = 0;
+        } else if (
+          e.pageY - dragoffset.y + 102 >
+          document.getElementById("dragable-bg").clientHeight
+        ) {
+          offsetY = document.getElementById("dragable-bg").clientHeight - 102;
+        } else {
+          offsetY = e.pageY - dragoffset.y;
+        }
+
+        el.style.top = offsetY + "px";
+        el.style.left = offsetX + "px";
+      }
+    });
+  };
+  //cross browser event Helper function
+  var _on = function (el, event, fn) {
+    document.attachEvent
+      ? el.attachEvent("on" + event, fn)
+      : el.addEventListener(event, fn, !0);
+  };
+  this.init();
+};
+
+let furniture = document.querySelectorAll(".pro"); // change to pro
+
+// CHANGED HERE
+
+let dragableId = 0;
+
+let changeDragable = function () {
+  let div = document.createElement("div");
+  div.classList.add("dragable");
+  div.setAttribute("id", "dragable" + dragableId);
+  div.setAttribute("class", "resizable");
+  document.getElementById("dragable-bg").appendChild(div);
+  var img = document.createElement("img");
+
+  img.src = event.srcElement.src;
+  div.appendChild(img);
+  new Draggable("dragable" + dragableId);
+  dragableId += 1;
+};
+
+for (var i = 0; i < furniture.length; i++) {
+  furniture[i].addEventListener("click", changeDragable, false);
+}
+
+    </script>
+</body>
+</html>

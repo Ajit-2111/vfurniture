@@ -1,0 +1,146 @@
+#page-header {
+  background-image: url("../images/banner/Sbanner.webp");
+  width: 100%;
+  height: 40vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  text-align: start;
+  flex-direction: column;
+  padding: 60px;
+}
+
+#page-header h2,
+#page-header p {
+  color: white;
+}
+
+#pagination {
+  text-align: center;
+}
+
+#pagination a {
+  text-decoration: none;
+  background-color: #088178;
+  padding: 15px 20px;
+  border-radius: 4px;
+  color: #ffff;
+  font-weight: 600;
+}
+
+#pagination a i {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* -----------------------------ProductDetails--------------------------- */
+
+#prodetails .single-pro-image {
+  width: 40%;
+  margin-right: 50px;
+}
+
+.small-img-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-img-col {
+  flex-basis: 24%;
+  cursor: pointer;
+}
+
+#prodetails {
+  display: flex;
+  margin-top: 20px;
+}
+
+#prodetails .single-pro-details {
+  width: 50%;
+  padding-top: 30px;
+}
+
+.single-pro-image img {
+  padding-bottom: 10px;
+}
+
+.section-p11 {
+  padding: 0px 80px;
+}
+
+.single-pro-details {
+  width: 70%;
+  /* justify-content: center; */
+  margin: auto;
+  /* padding-top: ; */
+  margin-top: 40px;
+}
+
+.single-pro-details h3 {
+  padding: 20px 0px 2px 0px;
+}
+
+.single-pro-details h4 {
+  padding: 20px 0px 10px 0px;
+}
+
+.single-pro-details h2 {
+  font-size: 26px;
+}
+
+.single-pro-details select {
+  display: block;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+.single-pro-details input {
+  width: 50px;
+  height: 47px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.single-pro-details input:focus {
+  outline: none;
+}
+
+button.normal {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 15px 30px;
+  color: rgb(0, 0, 0);
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: 0.2s;
+}
+
+.single-pro-details button {
+  background-color: #088178 !important;
+  color: #fff !important;
+}
+
+.single-pro-details span {
+  line-height: 25px;
+}
+
+@media (max-width: 477px) {
+  #prodetails {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #prodetails .single-pro-image {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  #prodetails .single-pro-details {
+    width: 100%;
+    /* margin-right: 50px; */
+  }
+}
